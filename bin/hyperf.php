@@ -12,7 +12,6 @@ declare(strict_types=1);
  */
 use Hyperf\Contract\ApplicationInterface;
 use Hyperf\Di\ClassLoader;
-use Hyperf\Di\ScanHandler\ProcScanHandler;
 use Hyperf\Engine\DefaultOption;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
@@ -29,7 +28,7 @@ require BASE_PATH . '/vendor/autoload.php';
 
 // Self-called anonymous function that creates its own scope and keep the global namespace clean.
 (function () {
-    ClassLoader::init(handler: new ProcScanHandler());
+    ClassLoader::init();
     /** @var ContainerInterface $container */
     $container = require BASE_PATH . '/config/container.php';
     /** @var Application $application */
